@@ -4,7 +4,7 @@
                 <script>
                         document.write(new Date().getFullYear())
                 </script>
-            © DPlus by&nbsp;<a href='#' class='text-primary fw-500' title='eCituk' target='_blank'>eCituk</a></span>
+            © The fives&nbsp;<a href='#' class='text-primary fw-500' title='eCituk' target='_blank'>eC</a></span>
          
 
     </div>

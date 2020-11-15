@@ -1,10 +1,10 @@
 <aside class="page-sidebar">
     <div class="page-logo">
         <a href="#" class="page-logo-link press-scale-down d-flex align-items-center position-relative" data-toggle="modal" data-target="#modal-shortcut">
-            <img src="{{ asset('smartadmin/img/logo.png')}}" alt="SmartAdmin WebApp" aria-roledescription="logo">
-            <span class="page-logo-text mr-1">DPlus App</span>
+            <img src="{{ asset('img/logo.png')}}" alt="FivesWebApp" aria-roledescription="logo">
+            <span class="page-logo-text mr-1">The fives App</span>
             <span class="position-absolute text-white opacity-50 small pos-top pos-right mr-2 mt-n2"></span>
-            <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i>
+            {{-- <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i>s --}}
         </a>
     </div>
     <!-- BEGIN PRIMARY NAVIGATION  -->
@@ -17,7 +17,7 @@
                 </a>
             </div>
         </div>
-        <div class="info-card">
+        {{-- <div class="info-card">
             <img src="{{ asset('smartadmin/img/demo/avatars/avatar-admin.png')}}" class="profile-image rounded-circle" alt="Dr. Codex Lantern">
             <div class="info-card-text">
                 <a href="#" class="d-flex align-items-center text-white">
@@ -31,29 +31,40 @@
             <a href="#" onclick="return false;" class="pull-trigger-btn" data-action="toggle" data-class="list-filter-active" data-target=".page-sidebar" data-focus="nav_filter_input">
                 <i class="fal fa-angle-down"></i>
             </a>
-        </div>
+        </div> --}}
         <ul id="js-nav-menu" class="nav-menu">
             
             
             <li class="nav-title">Principales</li>
-            {{-- <li class=" {{setCollapseShow(['admin.ventas.index','dashboard'])}} ">
-                <a href="#" title="UI Ventas" data-filter-tags="ui ventas">
+            <li class=" {{setCollapseShow(['dashboard','admin.sales.*','admin.products.*'])}} ">
+                <a href="#" title="UI Main" data-filter-tags="ui main">
                     <i class="fal fa-window"></i>
-                    <span class="nav-link-text" data-i18n="nav.ui_ventas">Ventas</span>
+                    <span class="nav-link-text" data-i18n="nav.ui_main">Main</span>
                 </a>
                 <ul>
-                    <li class="{{ setActiveRoute('admin.ventas.index') }}">
-                        <a href="{{route('admin.ventas.index')}}" title="Alerts" data-filter-tags="ui ventas alerts">
-                            <span class="nav-link-text" data-i18n="nav.ui_ventas_alerts">Ventas</span>
+                    <li class=" {{ setActiveRoute('dashboard') }} ">
+                        <a href="{{route('dashboard')}}" title="Dashboard" data-filter-tags="ui main alerts">
+                            <span class="nav-link-text" data-i18n="nav.ui_main_alerts">Dashboard</span>
                         </a>
                     </li>
-                    <li class="{{ setActiveRoute('dashboard') }}">
-                        <a href="{{route('dashboard')}}"  title="Accordions" data-filter-tags="ui ventas accordions">
-                            <span class="nav-link-text" data-i18n="nav.ui_ventas_accordions">Dashboard</span>
+                   {{--  <li class=" {{ setActiveRoute('admin.sales.*') }} ">
+                        <a href="{{route('admin.sales.index')}}" title="Sales" data-filter-tags="ui main alerts">
+                            <span class="nav-link-text" data-i18n="nav.ui_main_alerts">Sales</span>
                         </a>
                     </li>
+                    <li class=" {{ setActiveRoute('admin.cart.index') }} ">
+                        <a href="{{route('admin.cart.index')}}" title="Cart" data-filter-tags="ui main alerts">
+                            <span class="nav-link-text" data-i18n="nav.ui_main_alerts">cart</span>
+                        </a>
+                    </li> 
+                    <li class=" {{ setActiveRoute('admin.products.*') }} ">
+                        <a href="{{route('admin.products.index')}}"  title="Productos" data-filter-tags="ui main accordions">
+                            <span class="nav-link-text" data-i18n="nav.ui_main_accordions">Productos</span>
+                        </a>
+                    </li>--}}
                 </ul>
             </li>
+             {{--
             <li class="nav-title">Administración</li>
             @can('view', [new App\Cliente])
                 <li class=" {{setCollapseShow(['admin.clientes.*'])}}" >

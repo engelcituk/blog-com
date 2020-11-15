@@ -1179,7 +1179,7 @@ var initApp = (function(app) {
 		}
 
 		if (myapp_config.debugState)
-			console.log( "mobileCheckActivation on " + $(window).width() + " | activated: " + myapp_config.mobileMenuTrigger);
+			//console.log( "mobileCheckActivation on " + $(window).width() + " | activated: " + myapp_config.mobileMenuTrigger);
 
 		return myapp_config.mobileMenuTrigger;
 	}; 
@@ -1272,11 +1272,11 @@ var initApp = (function(app) {
 				disableFadeOut: false
 			});
 
-			if (myapp_config.debugState)
-				console.log("%c✔ SlimScroll plugin active", "color: #148f32");	
+			/*if (myapp_config.debugState)
+				console.log("%c✔ SlimScroll plugin active", "color: #148f32");*/	
 
 		} else {
-			console.log("WARN! $.fn.slimScroll not loaded or user is on desktop");
+			// console.log("WARN! $.fn.slimScroll not loaded or user is on desktop");
 			myapp_config.root_.addClass("no-slimscroll");
 		}
 
@@ -1347,12 +1347,12 @@ var initApp = (function(app) {
 			Waves.attach('.nav-menu:not(.js-waves-off) a, .btn:not(.js-waves-off):not(.btn-switch), .js-waves-on', ['waves-themed']);
     		Waves.init();
 
-			if (myapp_config.debugState)
-				console.log("%c✔ Waves plugin active", "color: #148f32");	
+			/*if (myapp_config.debugState)
+				console.log("%c✔ Waves plugin active", "color: #148f32");	*/
 			
 		} else {
-			if (myapp_config.debugState)
-				console.log("%c✘ Waves plugin inactive! ", "color: #fd3995");
+			/*if (myapp_config.debugState)
+				console.log("%c✘ Waves plugin inactive! ", "color: #fd3995");*/
 
 		}
 
@@ -1716,8 +1716,8 @@ var initApp = (function(app) {
 		 * Display APP version
 		 * DOC: only show this if debug state tree
 		 **/
-		 if (myapp_config.debugState)
-		 	console.log("%c✔ Finished app.init() v" + myapp_config.VERSION + '\n' + "---------------------------", "color: #148f32");	
+		 //if (myapp_config.debugState)
+		 	//console.log("%c✔ Finished app.init() v" + myapp_config.VERSION + '\n' + "---------------------------", "color: #148f32");	
 	};
 
 	return app;
@@ -1855,14 +1855,14 @@ $(window).on("blur focus", function(e) {
                 myapp_config.root_.toggleClass("blur") 
 
                 if (myapp_config.debugState)
-                console.log("blur");
+                //console.log("blur");
             
                 break;
             case "focus":
                 myapp_config.root_.toggleClass("blur")
                 if (myapp_config.debugState)
 
-                console.log("focused");
+                //console.log("focused");
 
                 break;
         }

@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <title>
-            DPlus
+            The fives - @yield('title')
         </title>
         <meta name="description" content="Page Titile">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,9 +24,10 @@
         <link rel="stylesheet" media="screen, print" href="{{ asset('smartadmin/css/app.bundle.css') }}">
 
         <!-- Place favicon.ico in the root directory -->
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/favicon/apple-touch-icon.png')}}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon/favicon-32x32.png')}}">
-        <link rel="mask-icon" href="{{ asset('img/favicon/safari-pinned-tab.svg')}}" color="#5bbad5">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/favicon/favicon.ico')}}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon/favicon.ico')}}">
+        <link rel="mask-icon" href="{{ asset('img/favicon/favicon.ico')}} color="#5bbad5">
+        
         @stack('stylesCss')
         <!--<link rel="stylesheet" media="screen, print" href="css/your_styles.css">-->
     </head>
@@ -53,11 +54,11 @@
             if (themeSettings.themeOptions)
             {
                 classHolder.className = themeSettings.themeOptions;
-                console.log("%c✔ Theme settings loaded", "color: #148f32");
+                //console.log("%c✔ Theme settings loaded", "color: #148f32");
             }
             else
             {
-                console.log("Heads up! Theme settings is empty or does not exist, loading default settings...");
+                //console.log("Heads up! Theme settings is empty or does not exist, loading default settings...");
             }
             if (themeSettings.themeURL && !document.getElementById('mytheme'))
             {
@@ -106,68 +107,7 @@
                     <!-- BEGIN Page Content -->
                     <!-- the #js-page-content id is needed for some plugins to initialize -->
                     <main id="js-page-content" role="main" class="page-content">
-                        {{-- <ol class="breadcrumb page-breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">SmartAdmin</a></li>
-                            <li class="breadcrumb-item">category_1</li>
-                            <li class="breadcrumb-item">category_2</li>
-                            <li class="breadcrumb-item active">Page Titile</li>
-                            <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
-                        </ol>
-                        <div class="subheader">
-                            <h1 class="subheader-title">
-                                <i class='subheader-icon fal fa-'></i> Page <span class='fw-300'>Title</span> <sup class='badge badge-primary fw-500'>ADDON</sup>
-                                <small>
-                                    blank description
-                                </small>
-                            </h1>
-                            <div class="subheader-block">
-                                Right content of header
-                            </div>
-                        </div>
-                        <div class="alert alert-primary">
-                            <div class="d-flex flex-start w-100">
-                                <div class="mr-2 hidden-md-down">
-                                    <span class="icon-stack icon-stack-lg">
-                                        <i class="base base-6 icon-stack-3x opacity-100 color-primary-500"></i>
-                                        <i class="base base-10 icon-stack-2x opacity-100 color-primary-300 fa-flip-vertical"></i>
-                                        <i class="ni ni-blog-read icon-stack-1x opacity-100 color-white"></i>
-                                    </span>
-                                </div>
-                                <div class="d-flex flex-fill">
-                                    <div class="flex-fill">
-                                        <span class="h5">About</span>
-                                        <p>Points.</p>
-                                        <p class="m-0">
-                                            Find in-depth, guidelines, tutorials and more on Addon's <a href="#" target="_blank">Official Documentation</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div id="panel-1" class="panel">
-                                    <div class="panel-hdr">
-                                        <h2>
-                                            Panel <span class="fw-300"><i>Title</i></span>
-                                        </h2>
-                                        <div class="panel-toolbar">
-                                            <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
-                                            <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
-                                            <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Close"></button>
-                                        </div>
-                                    </div>
-                                    <div class="panel-container show">
-                                        <div class="panel-content">
-                                            <div class="panel-tag">
-                                                Panel tag <code>code</code>
-                                            </div>
-                                            Text
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
+                        
                         @yield('content')
 
                     </main>
@@ -187,31 +127,9 @@
         <!-- END Page Wrapper -->
         <!-- BEGIN Quick Menu -->
         <!-- to add more items, please make sure to change the variable '$menu-items: number;' in your _page-components-shortcut.scss -->
-        <nav class="shortcut-menu d-none d-sm-block">
-            <input type="checkbox" class="menu-open" name="menu-open" id="menu_open" />
-            <label for="menu_open" class="menu-open-button ">
-                <span class="app-shortcut-icon d-block"></span>
-            </label>
-            <a href="#" class="menu-item btn" data-toggle="tooltip" data-placement="left" title="Scroll Top">
-                <i class="fal fa-arrow-up"></i>
-            </a>
-            
-            <a href="{{ route('logout') }}" class="menu-item btn" data-toggle="tooltip" data-placement="left" title="Cerrar sesión"
-                onclick="event.preventDefault(); document.getElementById('logout-form-quick-menu').submit();"            
-            >
-                <i class="fal fa-sign-out"></i>
-            </a>
-           
-            <a href="#" class="menu-item btn" data-action="app-fullscreen" data-toggle="tooltip" data-placement="left" title="Full Screen">
-                <i class="fal fa-expand"></i>
-            </a>
-            <a href="#" class="menu-item btn" data-action="app-print" data-toggle="tooltip" data-placement="left" title="Print page">
-                <i class="fal fa-print"></i>
-            </a>
-            <a href="#" class="menu-item btn" data-action="app-voice" data-toggle="tooltip" data-placement="left" title="Voice command">
-                <i class="fal fa-microphone"></i>
-            </a>
-        </nav>
+        
+        {{-- @include('admin.shared.quickMenu') --}}
+        
         <form id="logout-form-quick-menu" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>

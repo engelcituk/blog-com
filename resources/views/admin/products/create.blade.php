@@ -4,11 +4,8 @@
 
 @include('admin.shared.flash-messages') {{-- incluyo el bloque para mensajes flash --}}  
 <ol class="breadcrumb page-breadcrumb">
-    <li class="breadcrumb-item"><a href="{{route('admin.products.index')}}" > <i class="fal fa-arrow-left"></i> Servicios</a></li>
-    <li class="breadcrumb-item">Configuración</li>
-    <li class="breadcrumb-item">Servicios</li>
-    <li class="breadcrumb-item">Productos</li>
-    <li class="breadcrumb-item active">Crear</li>
+    <li class="breadcrumb-item"> <a href="{{route('admin.products.index')}}" > <i class="fal fa-arrow-left"></i> Products </a> </li> 
+        <li class="breadcrumb-item active">Create</li>
     <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
 </ol> 
 
@@ -38,15 +35,7 @@
                                 </div>
                                 <div class="form-group">
                                         <label class="form-label" for="selectPeriodo">Selecciona categoría</label>
-                                        <select class="form-control" name="category_id">
-                                            @forelse ($categorias as $categoria)
-                                                <option value="{{$categoria->id}}"
-                                                        {{ old('category_id') == $categoria->id ? 'selected' : ''}}
-                                                        >{{$categoria->name}}</option>
-                                            @empty
-                                                <option value="">Sin datos</option>
-                                            @endforelse
-                                        </select>
+                                        
                                     </div>
                                 
                                 <div class="form-group">
@@ -54,28 +43,7 @@
                                     <textarea class="form-control" name="description" id="descripción" rows="1">{{ old('description')}}</textarea>
                                 </div>
                                 
-                                <div class="frame-wrap">
-                                    <label class="form-label" for="descripción">Tiene inventario</label><br>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="custom-control-input" id="radioSi" name="has_inventory" value="1" required>
-                                        <label class="custom-control-label" for="radioSi">Sí</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="custom-control-input" id="radioNo" name="has_inventory" value="0" required>
-                                        <label class="custom-control-label" for="radioNo">No</label>
-                                    </div>
-                                </div>
-                                <div class="frame-wrap">
-                                    <label class="form-label" for="descripción">IVA 16%</label><br>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="custom-control-input" id="radioSiIva" name="iva" value="1" required>
-                                        <label class="custom-control-label" for="radioSiIva">Sí</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="custom-control-input" id="radioNoIva" name="iva" value="0" required>
-                                        <label class="custom-control-label" for="radioNoIva">No</label>
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -96,33 +64,7 @@
                                     <input type="number" step="0.01" class="form-control validarDecimal" placeholder="Precio" aria-label="Precio" aria-describedby="addon-wrapping-left" id="precioVenta" name="sale_price" value="{{ old('sale_price')}}">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="addon-wrapping-left">Precio mayoreo</label>
-                                    <div class="input-group flex-nowrap">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fal fa-dollar-sign fs-xl"></i></span>
-                                        </div>
-                                    <input type="number" step="0.01" class="form-control validarDecimal" placeholder="Precio" aria-label="Precio" aria-describedby="addon-wrapping-left" id="precioMayoreo" name="wholesale_price" value="{{ old('wholesale_price')}}">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="addon-wrapping-left">Unidades</label>
-                                    <div class="input-group flex-nowrap">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fal fa-dollar-sign fs-xl"></i></span>
-                                        </div>
-                                    <input type="number" class="form-control" placeholder="Unidades"  aria-label="Unidades" aria-describedby="addon-wrapping-left" id="unidades" name="units" value="{{ old('units')}}">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="addon-wrapping-left">Mínimo</label>
-                                    <div class="input-group flex-nowrap">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fal fa-dollar-sign fs-xl"></i></span>
-                                        </div>
-                                    <input type="number" class="form-control" placeholder="Minimo" aria-label="Minimo" aria-describedby="addon-wrapping-left" id="precioFinal" name="minimum" value="{{ old('minimum')}}">
-                                    </div>
-                                </div>
+                                                                
                                 <button class="mt-3 btn btn-primary btn-block"> Crear producto</button>
                             </div>
                         </div>        

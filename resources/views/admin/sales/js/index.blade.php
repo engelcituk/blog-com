@@ -1,7 +1,10 @@
 <script>
+const csrf_token = $('meta[name="csrf-token"]').attr('content');    
+const auth_user_id = $('meta[name="user_id"]').attr('content');     
+
 
 $(document).ready(function(){
-    $('#tableProducts').dataTable({
+    $('#tablaSales').dataTable({
         responsive: true,
         language: {
         "decimal": "",
@@ -19,10 +22,28 @@ $(document).ready(function(){
     },
     });
 });
-function borrarProducto(idProducto){
-    var csrf_token = $('meta[name="csrf-token"]').attr('content');     
+
+// muestro el modal si har errores
+@if ($errors->any())
+  $('#createSale').modal('toggle');
+@endif
+
+if (window.location.hash === '#create') {
+    $('#createSale').modal('toggle');
+} 
+
+$('#createSale').on('hidden.bs.modal', function (e) {
+    window.location.hash = '#';
+}); 
+
+$('#createSale').on('shown.bs.modal', function (e) {
+    $("#firstname_client").focus();
+    window.location.hash = '#create';
+});
+
+const deleteSale = ( idSale ) => {    
     Swal.fire({
-      title: '¿Seguro de borrar este producto?',
+      title: '¿Seguro de borrar esta venta?',
       text: "¡No podrás revertir esto!",
       type: 'warning',
       showCancelButton: true,
@@ -32,11 +53,11 @@ function borrarProducto(idProducto){
     }).then((result) => {
       if (result.value) {
         $.ajax({
-              url: "{{ url('admin/products') }}" + '/' + idProducto,
+              url: "{{ url('admin/sales') }}" + '/' + idSale,
               type: "DELETE",
               data: {
                   '_method': 'DELETE',
-                  'id': idProducto,
+                  //'id': idSale,
                   '_token': csrf_token
               },
               success: function(respuesta) {
@@ -68,5 +89,5 @@ function borrarProducto(idProducto){
           });
       }
     })
-  }
-</script>
+}
+</script>  

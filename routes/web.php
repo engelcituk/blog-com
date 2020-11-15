@@ -14,6 +14,5 @@ Route::group([
 function(){
     Route::get('/', 'AdminController@index')->name('dashboard');
 
-   
 }); 
 
