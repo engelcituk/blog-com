@@ -15,35 +15,42 @@
 <div class="row">
     <div class="col-md-12">
         
-            <a href="{{route('admin.products.create')}}" class="btn btn-primary" > <i class="fal fa-plus"></i> Register product</a><br>
+             <a href="{{route('admin.users.create')}}" class="btn btn-primary" > <i class="fal fa-plus"></i> Registrar usuario</a><br>
         
          
         <div id="panel-1" class="panel mt-3">
             <div class="panel-hdr">
                 <h2>
-                    List of  <span class="fw-300"><i>products</i></span>
+                    Lista de  <span class="fw-300"><i>usuarios</i></span>
                 </h2>
             </div>
             <div class="panel-container show">
                 <div class="panel-content">
                     <!-- datatable start -->
-                    <table id="tableProducts" class="table table-bordered table-hover table-striped w-100">
+                    <table id="tableUsers" class="table table-bordered table-hover table-striped w-100">
                         <thead>
                             <tr>
                                 <th>id</th>
                                 <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Roles</th>
                                 <th>Acciones</th>
                                 
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($productos as $producto)
+                            @forelse ($users as $user)
                                 <tr>
-                                    <td>{{$producto->identifier}}</td>
-
-                                    <td>{{$producto->title}}</td>
+                                    <td>{{$user->id}}</td>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->getRoleNames()->implode(', ')}}</td>
                                     <td>
-                                        x                                    
+                                                                           
+                                        <a class="btn btn-info btn-sm" href="{{route('admin.users.show',  $user)}}"><i class="fal fa-eye"></i></a> 
+                                        <a class="btn btn-primary btn-sm" href="{{route('admin.users.edit',  $user)}}"><i class="fal fa-edit"></i></a> 
+                                        <button class="btn btn-danger btn-sm" onclick="deleteUser({{$user->id}})"><i class="fal fa-trash"></i></button>                                                                                
+                                                                           
                                     </td> 
                                 </tr>
                                 @empty
@@ -70,5 +77,5 @@
 @push('scriptsJs') 
     <script src="{{ asset('smartadmin/js/datagrid/datatables/datatables.bundle.js') }}" ></script>  
     <script src="{{ asset('smartadmin/js/notifications/sweetalert2/sweetalert2.bundle.js') }}" ></script>   
-    @include('admin.products.js.index') 
+    @include('admin.users.js.index') 
 @endpush
