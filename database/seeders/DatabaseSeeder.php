@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;'); // sino deshabilito esto me marca error de constraints
         
+        $this->call(CategoriesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         
         DB::statement('SET FOREIGN_KEY_CHECKS=0;'); // lo vuelvo a activar
