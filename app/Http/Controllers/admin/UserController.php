@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Validation\Rule;
+use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -71,14 +71,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        $data = $request->validate([
-            'name' =>'required',
-            'email' =>['required', Rule::unique('users')->ignore($user->id)],
-        ]);
-
-        $user->update($data);
+        $user->update($request->validated());
 
         return back()->withFlash('Usuario actualizado');
     }
