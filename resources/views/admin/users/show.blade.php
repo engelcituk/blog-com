@@ -4,7 +4,7 @@
 <div class="content">
     <div class="container-fluid">
         @include('admin.shared.flash-messages') 
-                                            
+                                           
         <a href="{{route('admin.users.index')}}" class="btn btn-warning"> <i class="fal fa-arrow-left"></i>  Regresar</a>
         <div class="row mt-5">
             <div class="col-md-3">
