@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Http\Requests\UpdateUserRequest;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Events\UserWasCreated;
 
 class UserController extends Controller
 {
@@ -57,6 +58,8 @@ class UserController extends Controller
 
         $user->assignRole($request->roles);
         $user->givePermissionTo($request->permissions);
+
+        UserWasCreated::dispatch($user, $data['password']); //envio de email con eventos y listeners
 
         return redirect()->route('admin.users.edit', $user)->withFlash('el usuario ha sido creado');
         
