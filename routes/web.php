@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () { return view('auth.login'); });
+/* Route::get('email', function () {
+    return  new App\Mail\InfoCredentials(App\Models\User::first(), 'asfasf') ;
+});
+ */
 
 Auth::routes();
 
@@ -18,8 +22,6 @@ function(){
 
     Route::put('users/{user}/roles', 'UserRolesController@update')->name('admin.users.roles.update'); 
     Route::put('users/{user}/permissions', 'UserPermissionsController@update')->name('admin.users.permissions.update'); 
-
-
 
 }); 
 

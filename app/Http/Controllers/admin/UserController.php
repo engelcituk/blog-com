@@ -59,6 +59,8 @@ class UserController extends Controller
         $user->assignRole($request->roles);
         $user->givePermissionTo($request->permissions);
 
+        //event(new UserWasCreated($user, $data['password']));
+
         UserWasCreated::dispatch($user, $data['password']); //envio de email con eventos y listeners
 
         return redirect()->route('admin.users.edit', $user)->withFlash('el usuario ha sido creado');
