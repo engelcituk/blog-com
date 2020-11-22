@@ -1,5 +1,8 @@
 @extends('admin.layout')
 
+@section('title', 'Perfil')
+
+
 @section('content')
 <div class="content">
     <div class="container-fluid">

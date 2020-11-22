@@ -30,7 +30,12 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $user = new User;
+
+        $roles = Role::with('permissions')->get(); 
+        $permissions = Permission::pluck('name', 'id'); 
+
+        return view('admin.users.create',compact('user', 'roles','permissions'));
     }
 
     /**
@@ -45,7 +50,7 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource. 
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

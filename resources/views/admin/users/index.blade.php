@@ -1,7 +1,7 @@
 
 @extends('admin.layout')
 
-@section('title', 'Products')
+@section('title', 'Usuarios')
 
 @section('content')
     @include('admin.shared.flash-messages') {{-- incluyo el bloque para mensajes flash --}}  
