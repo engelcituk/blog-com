@@ -71,13 +71,13 @@ class User extends Authenticatable
         });*/
 
         //al borrar un user, por cascade elimino tambien sus relaciones 
-        static::deleting(function($resource) {
+       /* static::deleting(function($resource) {
             foreach (static::$relations_to_cascade as $relation) {
                 foreach ($resource->{$relation}()->get() as $item) {
                     $item->delete();
                 }
             }
-        });
+        });*/
         //al restaurar un user, por cascade restauro tambien sus relaciones 
         static::restoring(function($resource) {
             foreach (static::$relations_to_cascade as $relation) {

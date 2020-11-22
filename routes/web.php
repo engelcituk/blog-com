@@ -19,9 +19,15 @@ function(){
     Route::get('/', 'AdminController@index')->name('dashboard');
     Route::resource('posts', 'PostController',['except'=>'show','as'=>'admin']); //as es para add prefijo admin al nombre de las rutas
     Route::resource('users', 'UserController',['as'=>'admin']); //as es para add prefijo admin al nombre de las rutas
+    
+    //roles y permisos
+    Route::middleware('role:Admin')
+           ->put('users/{user}/roles', 'UserRolesController@update')
+           ->name('admin.users.roles.update');
 
-    Route::put('users/{user}/roles', 'UserRolesController@update')->name('admin.users.roles.update'); 
-    Route::put('users/{user}/permissions', 'UserPermissionsController@update')->name('admin.users.permissions.update'); 
+    Route::middleware('role:Admin')
+           ->put('users/{user}/permissions', 'UserPermissionsController@update')
+           ->name('admin.users.permissions.update');
 
 }); 
 
