@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <title>
-            The fives - @yield('title')
+            TheBlog - @yield('title')
         </title>
         <meta name="description" content="Page Titile">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

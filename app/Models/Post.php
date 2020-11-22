@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
+    use  SoftDeletes;
+
     //definimos los unicos campos que se pueden asignar masivamente, esto es usado en el update del controlador de posts
     protected $fillable = [
         'title', 'body','iframe','excerpt','published_at','category_id', 'user_id'
@@ -14,6 +16,8 @@ class Post extends Model
 
     protected $dates = ['published_at']; // para que el campo de la tabla published_at sea tratado como una instancia de carbon, para que lo considere como una fecha
 
+    /*En esta matriz almacenamos los nombres o las relaciones de los métodos que deseamos eliminar (o restaurar) cuando SoftDelete ocurre*/
+    protected static $relations_to_cascade = ['tags']; 
     //sobreescribimos el metodo estatico
     protected static function boot()
     {
@@ -24,6 +28,14 @@ class Post extends Model
             $post->photos->each(function($photo){ // se borra cada foto en la carpeta
                 $photo->delete();
             });
+        });
+        //al restaurar un post, por cascade restauro tambien sus relaciones 
+        static::restoring(function($post) {
+            foreach (static::$relations_to_cascade as $relation) {
+                foreach ($post->{$relation}()->get() as $item) {
+                    $item->withTrashed()->restore();
+                }
+            }
         });
     }
 
@@ -46,6 +58,7 @@ class Post extends Model
 
         return $this->morphMany(Photo::class, 'photoable');
     }
+    
     public function user() // el dueño del post, un post le pertenece a un solo usuario
     {
         return $this->belongsTo(User::class);

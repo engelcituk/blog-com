@@ -24,6 +24,7 @@ class CreatePostsTable extends Migration
             $table->text('iframe')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users')
                     ->onDelete('cascade')

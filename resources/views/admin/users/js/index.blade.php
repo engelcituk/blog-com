@@ -19,10 +19,11 @@ $(document).ready(function(){
     },
     });
 });
-function borrarUser(idUser){
+
+function deleteUser(idUser){
     var csrf_token = $('meta[name="csrf-token"]').attr('content');     
     Swal.fire({
-      title: '¿Seguro de borrar este usuario?',
+      title: '¿Seguro de borrar a este usuario?',
       text: "¡No podrás revertir esto!",
       type: 'warning',
       showCancelButton: true,
@@ -40,31 +41,30 @@ function borrarUser(idUser){
                   '_token': csrf_token
               },
               success: function(respuesta) {
-                    // tablaAlergenos.ajax.reload();
-                    var ok= respuesta.ok;
-                    if(ok){
-                      Swal.fire(
-                      'OK!',
-                      respuesta.mensaje,
-                      'success'
-                    )
-                   location.reload();
-                    }else {
-                      Swal.fire(
-                      ':(',
-                      respuesta.mensaje,
-                      'error'
-                    )
-                  } 
-                },
-                error: function(respuesta) {
-                    swal({
-                        title: 'Oops...',
-                        text: '¡Algo salió mal!'+respuesta.mensaje,
-                        type: 'error',
-                        timer: '1500'
-                    })
-                }
+                  var ok= respuesta.ok;
+                  if(ok){
+                    Swal.fire(
+                    'OK!',
+                    respuesta.mensaje,
+                    'success'
+                  )
+                  location.reload();
+                  }else {
+                    Swal.fire(
+                    ':(',
+                    respuesta.mensaje,
+                    'error'
+                  )
+                } 
+              },
+              error: function(respuesta) {
+                  swal({
+                      title: 'Oops...',
+                      text: '¡Algo salió mal!'+respuesta,
+                      type: 'error',
+                      timer: '1500'
+                  })
+              }
           });
       }
     })
