@@ -6,14 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class UserRolesController extends Controller
+class UserPermissionsController extends Controller
 {
     
     public function update(Request $request, User $user)
     {
-        $user->syncRoles($request->roles);
+        $user->syncPermissions($request->permissions);
 
-        return back()->withflash('Los roles han sido actualizados');
+        return back()->withflash('Los permisos del usuario han sido actualizados');
     }
-
 }

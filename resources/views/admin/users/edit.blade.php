@@ -71,9 +71,9 @@
                     <div class="card-body">
                         <h3 class="card-title">Permisos</h3> 
                         @role('Admin')
-                        {{-- <form action="{{route('admin.users.permissions.update',$user)}}" method="POST"> --}}
+                        <form action="{{route('admin.users.permissions.update',$user)}}" method="POST">
                             @csrf  {{ method_field('PUT') }}
-                            {{-- @include('admin.users.permissions.checkboxes',['model' => $user])  --}}
+                            @include('admin.users.permissions.checkboxes',$user) 
                             <button class="btn btn-primary btn-block"><i class="fal fa-save"></i> Actualizar permisos</button>
                         </form>
                         @else

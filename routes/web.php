@@ -17,6 +17,8 @@ function(){
     Route::resource('users', 'UserController',['as'=>'admin']); //as es para add prefijo admin al nombre de las rutas
 
     Route::put('users/{user}/roles', 'UserRolesController@update')->name('admin.users.roles.update'); 
+    Route::put('users/{user}/permissions', 'UserPermissionsController@update')->name('admin.users.permissions.update'); 
+
 
 
 }); 
