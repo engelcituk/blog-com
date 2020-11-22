@@ -1,10 +1,13 @@
 @extends('admin.layout')
 
+@section('title', 'Roles/permisos')
+
+
 @section('content')
 <div class="content">
     <div class="container-fluid">
         @include('admin.shared.flash-messages')   
-        <a href="{{route('admin.users.index')}}" class="btn btn-warning"> <i class="fal fa-arrow-left"></i>  Regresar</a>
+        <a href="{{route('admin.users.index')}}" class="btn btn-warning mb-2"> <i class="fal fa-arrow-left"></i>  Regresar</a>
       <div class="row">
         <div class="col-md-6">
           <div class="card card-profile">
@@ -46,10 +49,10 @@
                     <div class="card-body">
                         <h3 class="card-title">Roles y permisos</h3> 
                         @role('Admin')
-                        {{-- <form action="{{route('admin.users.roles.update',$user)}}" method="POST"> --}}
+                        <form action="{{route('admin.users.roles.update',$user)}}" method="POST">
                             @csrf  {{ method_field('PUT') }}
-                            {{-- @include('admin.users.roles.checkboxes')  --}}
-                            <button class="btn btn-primary btn-block"><i class="fas fa-save"></i> Actualizar Roles y permisos</button>
+                            @include('admin.users.roles.checkboxes') <br> 
+                            <button class="btn btn-primary btn-block"><i class="fal fa-save"></i> Actualizar Roles y permisos</button>
                         </form>
                         @else
                             <ul class="list-group">
@@ -71,7 +74,7 @@
                         {{-- <form action="{{route('admin.users.permissions.update',$user)}}" method="POST"> --}}
                             @csrf  {{ method_field('PUT') }}
                             {{-- @include('admin.users.permissions.checkboxes',['model' => $user])  --}}
-                            <button class="btn btn-primary btn-block"><i class="fas fa-save"></i> Actualizar permisos</button>
+                            <button class="btn btn-primary btn-block"><i class="fal fa-save"></i> Actualizar permisos</button>
                         </form>
                         @else
                             <ul class="list-group">

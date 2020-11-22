@@ -5,10 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Http\Requests\UpdateUserRequest;
-use Spatie\Permission\Models\Role;
 
-class UserController extends Controller
+class UserRolesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-
-        return view('admin.users.index',compact('users'));
+        //
     }
 
     /**
@@ -49,9 +45,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        return view('admin.users.show',compact('user'));
+        //
     }
 
     /**
@@ -60,11 +56,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        $roles = Role::pluck('name', 'id'); 
-
-        return view('admin.users.edit',compact('user', 'roles'));
+        //
     }
 
     /**
@@ -74,11 +68,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(Request $request, User $user)
     {
-        $user->update($request->validated());
+        $user->syncRoles($request->roles);
 
-        return back()->withFlash('Usuario actualizado');
+        return back()->withflash('Los roles han sido actualizados');
     }
 
     /**
