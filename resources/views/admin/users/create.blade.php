@@ -32,12 +32,15 @@
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for="roles"><strong>Roles</strong></label>
-                                        @include('admin.roles.checkboxes') {{-- incluyo el foreach con checkboxes de roles        --}}
+                                        @include('admin.shared.roles.checkboxes') {{-- incluyo el foreach con checkboxes de roles        --}}
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="permisos"><strong>Permisos</strong></label>
-                                        @include('admin.permissions.checkboxes',['model' => $user]) {{-- incluyo el foreach con checkboxes de permisos        --}}
+                                       
                                     </div>
+                                </div>
+                                 <label for="permisos"><strong>Permisos</strong></label>
+                                <div class="row">
+                                    @include('admin.shared.permissions.checkboxes',['model' => $user]) {{-- checkboxes de permisos        --}}
                                 </div>
                                 <span class="text-muted">La contraseña será enviado vía email</span>
 

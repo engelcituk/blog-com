@@ -1,0 +1,90 @@
+@extends('admin.layout')
+
+@section('title', 'Roles')
+
+
+@section('content')
+@include('admin.shared.flash-messages') {{-- incluyo el bloque para mensajes flash --}}  
+
+<ol class="breadcrumb page-breadcrumb">
+    <li class="breadcrumb-item">TF</a></li>
+    <li class="breadcrumb-item">Configuración</li>
+    <li class="breadcrumb-item active">Roles</li>    
+    <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
+</ol>
+    
+<div class="row">
+    <div class="col-md-12">
+        @can('create', $roles->first())
+
+            <a href="{{route('admin.roles.create')}}" class="btn btn-primary mb-3" > <i class="fal fa-plus"></i> Registrar rol</a>   
+        @endcan
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2>
+                    Lista de  <span class="fw-300"><i>roles</i></span>
+                </h2>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <!-- datatable start -->
+                    <table id="tablaRoles" class="table table-bordered table-hover table-striped w-100">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Identificador</th>
+                                <th>Nombre</th>
+                                <th>Permisos</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($roles as $role)
+                                <tr>
+                                    <td>{{$role->id}}</td>
+                                    <td>{{$role->name}}</td>
+                                    <td>{{$role->display_name}}</td>
+                                    <td>{{$role->permissions->pluck('display_name')->implode(', ')}}</td>
+                                    <td>
+                                        @can('update', $role)
+                                            <a class="btn btn-primary btn-sm" href="{{route('admin.roles.edit', $role)}}"><i class="fal fa-edit"></i> </a>
+                                        @endcan
+
+                                        @can('delete', $role)
+                                            @if ($role->id !== 1)
+                                                <button class="btn btn-danger btn-sm" onclick="borrarRol({{$role->id}})"><i class="fal fa-trash"></i>
+                                            </button>  
+                                            @endif
+                                        @endcan
+                                        
+                                                       
+                                    </td> 
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td>:(</td>
+                                    <td>:(</td>
+                                    <td>:(</td>
+                                    <td>:(</td>
+                                    <td>:(</td>
+                                </tr>
+                            @endforelse
+                        </tbody>  
+                    </table>
+                    <!-- datatable end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@push('stylesCss')
+    <link rel="stylesheet" media="screen, print" href="{{ asset('smartadmin/css/datagrid/datatables/datatables.bundle.css') }}">
+    <link rel="stylesheet" media="screen, print" href="{{ asset('smartadmin/css/notifications/sweetalert2/sweetalert2.bundle.css') }}">
+@endpush
+@push('scriptsJs') 
+    <script src="{{ asset('smartadmin/js/datagrid/datatables/datatables.bundle.js') }}" ></script>  
+    <script src="{{ asset('smartadmin/js/notifications/sweetalert2/sweetalert2.bundle.js') }}" ></script>   
+    @include('admin.roles.js.index') {{-- include con un file blade porque un archivo js no me permitía --}}
+@endpush

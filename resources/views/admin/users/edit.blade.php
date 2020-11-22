@@ -51,7 +51,7 @@
                         @role('Admin')
                         <form action="{{route('admin.users.roles.update',$user)}}" method="POST">
                             @csrf  {{ method_field('PUT') }}
-                            @include('admin.roles.checkboxes') <br> 
+                            @include('admin.shared.roles.checkboxes') <br> 
                             <button class="btn btn-primary btn-block"><i class="fal fa-save"></i> Actualizar Roles y permisos</button>
                         </form>
                         @else
@@ -73,7 +73,10 @@
                         @role('Admin')
                         <form action="{{route('admin.users.permissions.update',$user)}}" method="POST">
                             @csrf  {{ method_field('PUT') }}
-                            @include('admin.permissions.checkboxes',$user) 
+                            <div class="row">
+                                @include('admin.shared.permissions.checkboxes',['model' => $user]) {{-- checkboxes de permisos        --}}
+                            </div>
+                            <br>
                             <button class="btn btn-primary btn-block"><i class="fal fa-save"></i> Actualizar permisos</button>
                         </form>
                         @else
