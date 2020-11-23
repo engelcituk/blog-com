@@ -104,8 +104,12 @@ class User extends Authenticatable
         if ( auth()->user()->can('view', $this)) { 
             return $query; 
         }
-        return $query->where('id',auth()->id());
-        
+        return $query->where('id',auth()->id());   
+    }
+    
+    public function getRoleDisplayName()
+    {
+       return $this->roles->pluck('display_name')->implode(', ');
     }
     
 }

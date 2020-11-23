@@ -31,8 +31,6 @@ class SaveRolesRequest extends FormRequest
             $rules['name'] = 'required|unique:roles';
         }
         return $rules;
-
-        
     }
 
     public function messages()

@@ -21,23 +21,34 @@ class UsersTableSeeder extends Seeder
         Role::truncate();
         User::truncate();
 
-        $adminRole = Role::create(['name' => 'Admin']);
-        $writerRole = Role::create(['name' => 'Writter']);
+    
+        $adminRole = Role::create(['name'=>'Admin', 'display_name'=>'Administrador']);
+        $writerRole = Role::create(['name'=>'Writter','display_name'=>'Escritor']);
 
-        Permission::create(['name' => 'View posts']);
-        Permission::create(['name' => 'Create posts']);
-        Permission::create(['name' => 'Update posts']);
-        Permission::create(['name' => 'Delete posts']);
+        Permission::create(['name'=>'View categories','display_name'=>'Ver categorias']);
+        Permission::create(['name'=>'Create categories','display_name'=>'Crear categorias']);
+        Permission::create(['name'=>'Update categories','display_name'=>'Actualizar categorias']);
+        Permission::create(['name'=>'Delete categories','display_name'=>'Borrar categorias']);
 
-        Permission::create(['name' => 'View users']);
-        Permission::create(['name' => 'Create users']);
-        Permission::create(['name' => 'Update users']);
-        Permission::create(['name' => 'Delete users']);
+        Permission::create(['name'=>'View posts','display_name'=>'Ver publicaciones']);
+        Permission::create(['name'=>'Create posts','display_name'=>'Crear publicaciones']);
+        Permission::create(['name'=>'Update posts','display_name'=>'Actualizar publicaciones']);
+        Permission::create(['name'=>'Delete posts','display_name'=>'Borrar publicaciones']);
 
-        Permission::create(['name' => 'View roles']);
-        Permission::create(['name' => 'Create roles']);
-        Permission::create(['name' => 'Update roles']);
-        Permission::create(['name' => 'Delete roles']);
+        Permission::create(['name'=>'View users','display_name'=>'Ver usuarios']);
+        Permission::create(['name'=>'Create users','display_name'=>'Crear usuarios']);
+        Permission::create(['name'=>'Update users','display_name'=>'Actualizar usuarios']);
+        Permission::create(['name'=>'Delete users','display_name'=>'Borrar usuarios']);
+
+        Permission::create(['name'=>'View roles','display_name'=>'Ver roles']);
+        Permission::create(['name'=>'Create roles','display_name'=>'Crear roles']);
+        Permission::create(['name'=>'Update roles','display_name'=>'Actualizar roles']);
+        Permission::create(['name'=>'Delete roles','display_name'=>'Borrar roles']);
+
+        Permission::create(['name'=>'View permissions','display_name'=>'Ver permisos']);
+        Permission::create(['name'=>'Create permissions','display_name'=>'Crear permisos']);
+        Permission::create(['name'=>'Update permissions','display_name'=>'Actualizar permisos']);
+        Permission::create(['name'=>'Delete permissions','display_name'=>'Borrar permisos']);
 
 
         $admin = new User;
