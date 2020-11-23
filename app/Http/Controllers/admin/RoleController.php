@@ -60,7 +60,7 @@ class RoleController extends Controller
 
     public function update(SaveRolesRequest $request, Role $role)
     {
-       $this->authorize('update',$role);
+        $this->authorize('update',$role);
 
         $role->update($request->validated());
 
