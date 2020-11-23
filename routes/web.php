@@ -21,7 +21,7 @@ function(){
     Route::resource('users', 'UserController',['as'=>'admin']); //as es para add prefijo admin al nombre de las rutas
 
     Route::resource('roles', 'RoleController', ['except'=>'show','as'=>'admin']); //as es para add prefijo admin al nombre de las rutas
-    Route::resource('permissions', 'PermissionsController',['only'=>['index','edit','update'],'as'=>'admin']); //only para aceptar ciertos metodos
+    Route::resource('permissions', 'PermissionController',['only'=>['index','edit','update'],'as'=>'admin']); //only para aceptar ciertos metodos
 
     //roles y permisos
     Route::middleware('role:Admin')

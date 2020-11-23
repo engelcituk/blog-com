@@ -2,7 +2,7 @@
     <div class="page-logo">
         <a href="#" class="page-logo-link press-scale-down d-flex align-items-center position-relative" data-toggle="modal" data-target="#modal-shortcut">
             <img src="{{ asset('img/logo.png')}}" alt="FivesWebApp" aria-roledescription="logo">
-            <span class="page-logo-text mr-1">The fives App</span>
+            <span class="page-logo-text mr-1">The Blog App</span>
             <span class="position-absolute text-white opacity-50 small pos-top pos-right mr-2 mt-n2"></span>
             {{-- <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i>s --}}
         </a>
@@ -36,7 +36,7 @@
             
             
             <li class="nav-title">Principales</li>
-            <li class=" {{setCollapseShow(['dashboard','admin.sales.*','admin.products.*'])}} ">
+            <li class=" {{setCollapseShow(['dashboard','admin.users.show'])}} ">
                 <a href="#" title="UI Main" data-filter-tags="ui main">
                     <i class="fal fa-window"></i>
                     <span class="nav-link-text" data-i18n="nav.ui_main">Main</span>
@@ -47,6 +47,12 @@
                             <span class="nav-link-text" data-i18n="nav.ui_main_alerts">Dashboard</span>
                         </a>
                     </li>
+                    <li class="{{ setActiveRoute(['admin.users.show']) }}">
+                        <a href="{{route('admin.users.show',auth()->user())}}" title="Usuarios" data-filter-tags="configuracion perfil">
+                            <span class="nav-link-text" data-i18n="nav.configuracion_perfil">Perfil</span>
+                        </a>
+                    </li>
+                   
                    {{--  <li class=" {{ setActiveRoute('admin.sales.*') }} ">
                         <a href="{{route('admin.sales.index')}}" title="Sales" data-filter-tags="ui main alerts">
                             <span class="nav-link-text" data-i18n="nav.ui_main_alerts">Sales</span>
@@ -125,34 +131,34 @@
              --}}
 
             <li class="nav-title">Configuración</li>
-            {{-- @can('view', [new App\Models\User, new \Spatie\Permission\Models\Role, new \Spatie\Permission\Models\Permission]) --}}
+            @can('view', [new App\Models\User, new \Spatie\Permission\Models\Role, new \Spatie\Permission\Models\Permission])
                  <li class="{{setCollapseShow(['admin.users.*','admin.roles.*','admin.permissions.*'])}}">
                     <a href="#" title="Configuracion" data-filter-tags="configuracion conf">
                         <i class="fal fa-key"></i>
                         <span class="nav-link-text" data-i18n="nav.configuracion">Usuarios</span>
                     </a>
                     <ul>
-                        {{-- @can('view', new App\Models\User) --}}
+                        @can('view', new App\Models\User)
                             <li class="{{ setActiveRoute(['admin.users.index']) }}">
                                 <a href="{{route('admin.users.index')}}" title="Usuarios" data-filter-tags="configuracion users">
                                     <span class="nav-link-text" data-i18n="nav.configuracion_users">Usuarios</span>
                                 </a>
                             </li>
-                        {{-- @else --}}
+                        @else
                             <li class="{{ setActiveRoute(['admin.users.show']) }}">
                                 <a href="{{route('admin.users.show',auth()->user())}}" title="Usuarios" data-filter-tags="configuracion perfil">
                                     <span class="nav-link-text" data-i18n="nav.configuracion_perfil">Perfil</span>
                                 </a>
                             </li>
-                        {{-- @endcan --}}
+                        @endcan
                         
-                        {{-- @can('view', new \Spatie\Permission\Models\Role)  --}}
+                        @can('view', new \Spatie\Permission\Models\Role) 
                             <li class="{{ setActiveRoute(['admin.roles.*']) }}">
                                 <a href="{{route('admin.roles.index')}}" title="Roles" data-filter-tags="configuracion roles">
                                     <span class="nav-link-text" data-i18n="nav.configuracion_roles">Roles</span>
                                 </a>
                             </li>
-                        {{-- @endcan  --}}
+                        @endcan 
                         @can('view', new \Spatie\Permission\Models\Permission) 
                             <li class="{{ setActiveRoute(['admin.permissions.*']) }}">
                                 <a  href="{{route('admin.permissions.index')}}" title="Permisos" data-filter-tags="configuracion permisos">
@@ -163,7 +169,7 @@
                         
                     </ul>
                 </li> 
-            {{-- @endcan --}}
+            @endcan
              {{--
             @can('view', [new App\Category, new App\DaysPeriod, new App\Printer])
                 <li class="{{setCollapseShow(['admin.periododias.*','admin.printers.*','admin.categories.*'])}}">

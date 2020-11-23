@@ -1,5 +1,7 @@
 @extends('admin.layout')
 
+@section('title', 'Permisos')
+
 @section('content')
 @include('admin.shared.flash-messages') {{-- incluyo el bloque para mensajes flash --}}  
 <ol class="breadcrumb page-breadcrumb">

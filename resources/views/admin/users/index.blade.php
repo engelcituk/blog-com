@@ -14,10 +14,9 @@
     
 <div class="row">
     <div class="col-md-12">
-        
-             <a href="{{route('admin.users.create')}}" class="btn btn-primary" > <i class="fal fa-plus"></i> Registrar usuario</a><br>
-        
-         
+        @can('create', $users->first())
+            <a href="{{route('admin.users.create')}}" class="btn btn-primary" > <i class="fal fa-plus"></i> Registrar usuario</a><br>
+        @endcan 
         <div id="panel-1" class="panel mt-3">
             <div class="panel-hdr">
                 <h2>
@@ -52,14 +51,17 @@
                                         @can('update', $user)
                                             <a class="btn btn-primary btn-sm" href="{{route('admin.users.edit', $user)}}"><i class="fal fa-edit"></i> </a>
                                         @endcan
+                                        {{-- si usuario conecatado es igual al userId, no muestro botón de borrar --}}
                                         @can('delete', $user)
-                                            <button class="btn btn-danger btn-sm" onclick="deleteUser({{$user->id}})"><i class="fal fa-trash"></i>
+                                            <button class="btn btn-danger btn-sm {{ $user->id === auth()->user()->id ? 'd-none': ''}}" onclick="deleteUser({{$user->id}})"><i class="fal fa-trash"></i>
                                             </button>
                                         @endcan
                                     </td> 
                                 </tr>
                                 @empty
                                 <tr>
+                                    <td>:(</td>
+                                    <td>:(</td>
                                     <td>:(</td>
                                     <td>:(</td>
                                     <td>:(</td>

@@ -16,7 +16,6 @@
 <div class="row">
     <div class="col-md-12">
         @can('create', $roles->first())
-
             <a href="{{route('admin.roles.create')}}" class="btn btn-primary mb-3" > <i class="fal fa-plus"></i> Registrar rol</a>   
         @endcan
         <div id="panel-1" class="panel">
