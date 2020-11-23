@@ -46,11 +46,16 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->getRoleNames()->implode(', ')}}</td>
                                     <td>
-                                                                           
-                                        <a class="btn btn-info btn-sm" href="{{route('admin.users.show',  $user)}}"><i class="fal fa-eye"></i></a> 
-                                        <a class="btn btn-primary btn-sm" href="{{route('admin.users.edit',  $user)}}"><i class="fal fa-edit"></i></a> 
-                                        <button class="btn btn-danger btn-sm" onclick="deleteUser({{$user->id}})"><i class="fal fa-trash"></i></button>                                                                                
-                                                                           
+                                        @can('view', $user)
+                                            <a class="btn btn-info btn-sm" href="{{route('admin.users.show', $user)}}"><i class="fal fa-eye"></i> </a> 
+                                        @endcan
+                                        @can('update', $user)
+                                            <a class="btn btn-primary btn-sm" href="{{route('admin.users.edit', $user)}}"><i class="fal fa-edit"></i> </a>
+                                        @endcan
+                                        @can('delete', $user)
+                                            <button class="btn btn-danger btn-sm" onclick="deleteUser({{$user->id}})"><i class="fal fa-trash"></i>
+                                            </button>
+                                        @endcan
                                     </td> 
                                 </tr>
                                 @empty
