@@ -1,7 +1,6 @@
-@extends('admin.layout')
+@extends('layouts.admin')
 
 @section('title', 'Actualizar permiso')
-
 
 @section('content')
     @include('admin.shared.flash-messages') {{-- incluyo el bloque para mensajes flash --}}  

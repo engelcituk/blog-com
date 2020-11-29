@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('layouts.admin')
 
 @section('content')
     @include('admin.shared.flash-messages') {{-- incluyo el bloque para mensajes flash --}}  

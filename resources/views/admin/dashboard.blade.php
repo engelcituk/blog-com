@@ -1,5 +1,5 @@
 
-@extends('admin.layout')
+@extends('layouts.admin')
 
 @section('title', 'Dasboard')
 

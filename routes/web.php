@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () { return view('auth.login'); });
+Route::get('/', function () { return view('home'); });
 /* Route::get('email', function () {
     return  new App\Mail\InfoCredentials(App\Models\User::first(), 'asfasf') ;
 });
