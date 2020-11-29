@@ -21,7 +21,7 @@
         </div>
         
         <div class="navbar-translate">
-            <a class="navbar-brand" href="../index-2.html" rel="tooltip" title="Designed by Invision. Coded by Creative Tim" data-placement="bottom" target="_blank">
+            <a class="navbar-brand" href="{{route('home')}}"  rel="tooltip" title="Designed by Invision. Coded by Creative Tim" data-placement="bottom" >
                 Blog Cool
             </a>
 
@@ -48,7 +48,7 @@
                     </a>
                 </li>
                 <li class="nav-item {{ setActiveRoute(['contact']) }}">
-                    <a class="nav-link" href="{{route('contact')}}"style="font-size:1.2em;">
+                    <a class="nav-link" href="{{route('contact')}} "style="font-size:1.2em;">
                             <i class="fas fa-envelope"></i>
                         Contacto
                     </a>

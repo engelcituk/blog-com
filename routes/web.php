@@ -3,13 +3,13 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () { return view('public.landing'); });
 /* Route::get('email', function () {
     return  new App\Mail\InfoCredentials(App\Models\User::first(), 'asfasf') ;
 });
  */
 
 Auth::routes(['register' => false ]);
+Route::get('/', 'PagesController@home')->name('home');
 Route::get('/blog', 'PagesController@blog')->name('blog');
 Route::get('/contact', 'PagesController@contact')->name('contact');
 Route::get('/about', 'PagesController@about')->name('aboutus');
