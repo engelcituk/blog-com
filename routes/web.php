@@ -9,7 +9,6 @@ Route::get('/', function () { return view('home'); });
 });
  */
 
-
 Auth::routes(['register' => false ]);
 
 Route::group([
