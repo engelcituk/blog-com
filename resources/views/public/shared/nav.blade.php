@@ -20,7 +20,6 @@
             </div>
         </div>
         
-
         <div class="navbar-translate">
             <a class="navbar-brand" href="../index-2.html" rel="tooltip" title="Designed by Invision. Coded by Creative Tim" data-placement="bottom" target="_blank">
                 Blog Cool
@@ -36,20 +35,20 @@
         <div class="collapse navbar-collapse" data-nav-image="../assets/img//blurred-image-1.jpg" data-color="orange">
             <ul class="navbar-nav ml-auto">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#" style="font-size:1.2em;">
+                <li class="nav-item {{ setActiveRoute(['blog.*']) }}">
+                    <a class="nav-link" href="{{route('blog')}}" style="font-size:1.2em;">
                         <i class="fas fa-newspaper "></i>
                         Blog
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" style="font-size:1.2em;">
+                <li class="nav-item {{ setActiveRoute(['aboutus.*']) }}">
+                    <a class="nav-link" href="{{route('aboutus')}}" style="font-size:1.2em;">
                         <i class="fas fa-address-card"></i>
                         Nosotros
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" style="font-size:1.2em;">
+                <li class="nav-item {{ setActiveRoute(['contact']) }}">
+                    <a class="nav-link" href="{{route('contact')}}"style="font-size:1.2em;">
                             <i class="fas fa-envelope"></i>
                         Contacto
                     </a>

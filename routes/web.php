@@ -10,6 +10,11 @@ Route::get('/', function () { return view('public.landing'); });
  */
 
 Auth::routes(['register' => false ]);
+Route::get('/blog', 'PagesController@blog')->name('blog');
+Route::get('/contact', 'PagesController@contact')->name('contact');
+Route::get('/about', 'PagesController@about')->name('aboutus');
+
+
 
 Route::group([
     'prefix'=>'admin', //prefijo para no poner admin/posts
