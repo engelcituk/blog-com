@@ -254,8 +254,8 @@
         </div>
     </div>
 
-    <div class="section pt-0 pb-0">
-        <div class="team-3 section-image" data-parallax="true" style="background-image: url('../assets/img/bg26.jpg')">
+    <div class="section pt-0 pb-0">                            
+        <div class="team-3 section-image" data-parallax="true" style="background-image: url('{{ asset('now-ui-kit/assets/img/bg26.jpg')}}');" >
 
             <div class="container">
                 <div class="row">

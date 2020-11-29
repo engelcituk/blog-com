@@ -298,7 +298,7 @@
                             <div class="col-md-5">
                                 <div class="card-image">
                                     <a href="#pablo">
-                                        <img class="img img-raised rounded" src="../assets/img/michael.jpg" />
+                                        <img class="img img-raised rounded" src="{{ asset('now-ui-kit/assets/img/michael.jpg')}}" />
                                     </a>
                                 </div>
                             </div>
