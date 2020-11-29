@@ -4,7 +4,6 @@
 @section('title', 'Home')
 
 @section('content')
-    @include('public.shared.nav')
             
     <div class="page-header page-header-small">
         <div class="page-header-image" data-parallax="true" style="background-image: url('{{ asset('now-ui-kit/assets/img/bg26.jpg')}}');">
@@ -149,9 +148,6 @@
 
         </div>
     </div>
-
-    @include('public.shared.footer')
-
 @endsection
 
 
