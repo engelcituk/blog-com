@@ -32,22 +32,22 @@
             </button>
         </div>
 
-        <div class="collapse navbar-collapse" data-nav-image="../assets/img//blurred-image-1.jpg" data-color="orange">
+        <div class="collapse navbar-collapse" data-nav-image="{{ asset('now-ui-kit/assets/img/blurred-image-1.jpg')}}" data-color="orange">
             <ul class="navbar-nav ml-auto">
 
-                <li class="nav-item {{ setActiveRoute(['blog.*']) }}">
+                <li class="nav-item {{ setActiveRoute('blog') }}">
                     <a class="nav-link" href="{{route('blog')}}" style="font-size:1.2em;">
                         <i class="fas fa-newspaper "></i>
                         Blog
                     </a>
                 </li>
-                <li class="nav-item {{ setActiveRoute(['aboutus.*']) }}">
+                <li class="nav-item {{ setActiveRoute('aboutus') }}">
                     <a class="nav-link" href="{{route('aboutus')}}" style="font-size:1.2em;">
                         <i class="fas fa-address-card"></i>
                         Nosotros
                     </a>
                 </li>
-                <li class="nav-item {{ setActiveRoute(['contact']) }}">
+                <li class="nav-item {{ setActiveRoute('contact') }}">
                     <a class="nav-link" href="{{route('contact')}} "style="font-size:1.2em;">
                             <i class="fas fa-envelope"></i>
                         Contacto
