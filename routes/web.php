@@ -9,7 +9,8 @@ Route::get('/', function () { return view('home'); });
 });
  */
 
-Auth::routes();
+
+Auth::routes(['register' => false ]);
 
 Route::group([
     'prefix'=>'admin', //prefijo para no poner admin/posts

@@ -77,9 +77,7 @@
                     
                 </form>
             </div>
-            <div class="blankpage-footer text-center">
-                {{-- <a href="#"><strong>Recover Password</strong></a> | --}} <a href="{{ route('register') }}"><strong>Registrarse</strong></a>
-            </div>
+            
         </div>
         {{-- <div class="login-footer p-2">
             <div class="row">
