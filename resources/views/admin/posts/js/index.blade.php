@@ -23,21 +23,21 @@ $(document).ready(function(){
     });
 });
 
-// muestro el modal si har errores
+// muestro el modal si hay errores
 @if ($errors->any())
-  $('#createSale').modal('toggle');
+  $('#createPost').modal('toggle');
 @endif
 
 if (window.location.hash === '#create') {
-    $('#createSale').modal('toggle');
+    $('#createPost').modal('toggle');
 } 
 
-$('#createSale').on('hidden.bs.modal', function (e) {
+$('#createPost').on('hidden.bs.modal', function (e) {
     window.location.hash = '#';
 }); 
 
-$('#createSale').on('shown.bs.modal', function (e) {
-    $("#firstname_client").focus();
+$('#createPost').on('shown.bs.modal', function (e) {
+    $("#title").focus();
     window.location.hash = '#create';
 });
 

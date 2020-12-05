@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-md-12">
         
-        <button class="btn btn-primary" data-toggle="modal" data-target="#createSale"> <i class="fal fa-plus"></i> Register post</button><br>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#createPost"><i class="fal fa-plus"></i> Register post</button><br>
                  
         <div id="panel-1" class="panel mt-3">
             <div class="panel-hdr">
@@ -67,7 +67,7 @@
     </div>
 </div>
 
-{{-- @include('admin.posts.modals.createSale')  --}}
+@include('admin.posts.modals.createPost') 
 
 @endsection
 

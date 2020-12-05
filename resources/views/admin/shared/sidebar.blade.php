@@ -36,7 +36,7 @@
             
             
             <li class="nav-title">Principales</li>
-            <li class=" {{setCollapseShow(['dashboard','admin.users.show'])}} ">
+            <li class=" {{setCollapseShow(['dashboard','admin.users.show','admin.posts.*'])}} ">
                 <a href="#" title="UI Main" data-filter-tags="ui main">
                     <i class="fal fa-window"></i>
                     <span class="nav-link-text" data-i18n="nav.ui_main">Main</span>
@@ -53,21 +53,16 @@
                         </a>
                     </li>
                    
-                   {{--  <li class=" {{ setActiveRoute('admin.sales.*') }} ">
-                        <a href="{{route('admin.sales.index')}}" title="Sales" data-filter-tags="ui main alerts">
-                            <span class="nav-link-text" data-i18n="nav.ui_main_alerts">Sales</span>
+                   <li class=" {{ setActiveRoute('admin.posts.*') }} ">
+                        <a href="{{route('admin.posts.index')}}" title="Posts" data-filter-tags="ui posts alerts">
+                            <span class="nav-link-text" data-i18n="nav.ui_posts_alerts">Posts</span>
                         </a>
-                    </li>
-                    <li class=" {{ setActiveRoute('admin.cart.index') }} ">
-                        <a href="{{route('admin.cart.index')}}" title="Cart" data-filter-tags="ui main alerts">
-                            <span class="nav-link-text" data-i18n="nav.ui_main_alerts">cart</span>
+                    </li>        
+                    <li class=" {{ setActiveRoute('admin.posts.create') }} ">
+                        <a href="#" title="Cart" data-filter-tags="ui posts alerts" data-toggle="modal" data-target="#createPost">
+                            <span class="nav-link-text" data-i18n="nav.ui_posts_alerts">Crear post</span>
                         </a>
-                    </li> 
-                    <li class=" {{ setActiveRoute('admin.products.*') }} ">
-                        <a href="{{route('admin.products.index')}}"  title="Productos" data-filter-tags="ui main accordions">
-                            <span class="nav-link-text" data-i18n="nav.ui_main_accordions">Productos</span>
-                        </a>
-                    </li>--}}
+                    </li>                     
                 </ul>
             </li>
              {{--
