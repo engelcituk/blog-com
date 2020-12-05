@@ -36,35 +36,43 @@
             
             
             <li class="nav-title">Principales</li>
-            <li class=" {{setCollapseShow(['dashboard','admin.users.show','admin.posts.*'])}} ">
-                <a href="#" title="UI Main" data-filter-tags="ui main">
-                    <i class="fal fa-window"></i>
-                    <span class="nav-link-text" data-i18n="nav.ui_main">Main</span>
-                </a>
-                <ul>
-                    <li class=" {{ setActiveRoute('dashboard') }} ">
-                        <a href="{{route('dashboard')}}" title="Dashboard" data-filter-tags="ui main alerts">
-                            <span class="nav-link-text" data-i18n="nav.ui_main_alerts">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="{{ setActiveRoute(['admin.users.show']) }}">
-                        <a href="{{route('admin.users.show',auth()->user())}}" title="Usuarios" data-filter-tags="configuracion perfil">
-                            <span class="nav-link-text" data-i18n="nav.configuracion_perfil">Perfil</span>
-                        </a>
-                    </li>
-                   
-                   <li class=" {{ setActiveRoute('admin.posts.*') }} ">
-                        <a href="{{route('admin.posts.index')}}" title="Posts" data-filter-tags="ui posts alerts">
-                            <span class="nav-link-text" data-i18n="nav.ui_posts_alerts">Posts</span>
-                        </a>
-                    </li>        
-                    <li class=" {{ setActiveRoute('admin.posts.create') }} ">
-                        <a href="#" title="Cart" data-filter-tags="ui posts alerts" data-toggle="modal" data-target="#createPost">
-                            <span class="nav-link-text" data-i18n="nav.ui_posts_alerts">Crear post</span>
-                        </a>
-                    </li>                     
-                </ul>
-            </li>
+            @can('view', [new App\Models\User, new App\Models\Post])
+                <li class=" {{setCollapseShow(['dashboard','admin.users.show','admin.posts.*'])}}">
+                    <a href="#" title="UI Main" data-filter-tags="ui main">
+                        <i class="fal fa-window"></i>
+                        <span class="nav-link-text" data-i18n="nav.ui_main">Main</span>
+                    </a>
+                    <ul>                        
+                        <li class=" {{ setActiveRoute('dashboard') }} ">
+                            <a href="{{route('dashboard')}}" title="Dashboard" data-filter-tags="ui main alerts">
+                                <span class="nav-link-text" data-i18n="nav.ui_main_alerts">Dashboard</span>
+                            </a>
+                        </li>
+                        @can('view', new App\Models\User) 
+                            <li class="{{ setActiveRoute(['admin.users.show']) }}">
+                                <a href="{{route('admin.users.show',auth()->user())}}" title="Usuarios" data-filter-tags="configuracion perfil">
+                                    <span class="nav-link-text" data-i18n="nav.configuracion_perfil">Perfil</span>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('view', new App\Models\Post) 
+                            <li class=" {{ setActiveRoute('admin.posts.*') }} ">
+                                <a href="{{route('admin.posts.index')}}" title="Posts" data-filter-tags="ui posts alerts">
+                                    <span class="nav-link-text" data-i18n="nav.ui_posts_alerts">Posts</span>
+                                </a>
+                            </li>        
+                        @endcan
+                        @can('create', new App\Models\Post)                            
+                            <li class=" {{ setActiveRoute('admin.posts.create') }} ">
+                                <a href="#" title="Cart" data-filter-tags="ui posts alerts" data-toggle="modal" data-target="#createPost">
+                                    <span class="nav-link-text" data-i18n="nav.ui_posts_alerts">Crear post</span>
+                                </a>
+                            </li> 
+                        @endcan                  
+                    </ul>
+                </li>                
+            @endcan
+
              {{--
             <li class="nav-title">Administración</li>
             @can('view', [new App\Cliente])

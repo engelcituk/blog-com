@@ -9,8 +9,11 @@
 
 <div class="row">
     <div class="col-md-12">
+
+        @can('create', new App\Models\Post)
+            <button class="btn btn-primary" data-toggle="modal" data-target="#createPost"><i class="fal fa-plus"></i> Register post</button>
+        @endcan 
         
-        <button class="btn btn-primary" data-toggle="modal" data-target="#createPost"><i class="fal fa-plus"></i> Register post</button><br>
                  
         <div id="panel-1" class="panel mt-3">
             <div class="panel-hdr">
@@ -41,12 +44,15 @@
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->url}}</td>
                                     <td>{{$post->excerpt}}</td>
-
                                     <td>                                        
-                                        {{-- <a class="btn btn-info btn-sm" href="{{route('admin.sales.show',  $post)}}"><i class="fal fa-eye"></i></a> --}}
-                                        <a class="btn btn-primary btn-sm" href="{{route('admin.sales.cart',  $post)}}"><i class="fal fa-edit"></i></a> 
-                                        <button class="btn btn-danger btn-sm" onclick="deleteSale({{$post->id}})"><i class="fal fa-trash"></i></button>                                                                                
-                                    </td> 
+                                        @can('update', $post)
+                                            <a class="btn btn-primary btn-sm" href="{{route('admin.posts.edit', $post)}}"><i class="fal fa-edit"></i> </a>
+                                        @endcan
+                                        @can('delete', $post)
+                                            <button class="btn btn-danger btn-sm" onclick="deletePost({{$post->id}})"><i class="fal fa-trash"></i>
+                                            </button>
+                                        @endcan
+                                    </td>
                                 </tr>
                                 @empty
                                 <tr>
