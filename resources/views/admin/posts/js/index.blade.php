@@ -4,7 +4,7 @@ const auth_user_id = $('meta[name="user_id"]').attr('content');
 
 
 $(document).ready(function(){
-    $('#tablaSales').dataTable({
+    $('#tablaPosts').dataTable({
         responsive: true,
         language: {
         "decimal": "",
