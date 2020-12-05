@@ -44,11 +44,12 @@ class Post extends Model
     {
         return 'url';
     }
+    //un post pertenene a una sola categoría
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
-
+    //un post pertenece a muchos tags
     public function tags(){
 
         return $this->belongsToMany(Tag::class);
