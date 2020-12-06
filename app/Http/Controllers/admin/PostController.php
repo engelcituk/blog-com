@@ -31,15 +31,17 @@ class PostController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $this->authorize('create', new Post); 
+        
+        $this->validate($request,['title' => 'required|min:3']);
+            
+        $post = Post::create($request->all());
+        /* en el modelo se sobreescribió el metodo create: public static function create, para crear url unicas
+          */
+        return redirect()->route('admin.posts.edit', $post);
+
     }
 
     /**
@@ -61,7 +63,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**

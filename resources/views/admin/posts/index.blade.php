@@ -27,11 +27,11 @@
                     <table id="tablaPosts" class="table table-bordered table-hover table-striped w-100">
                         <thead>
                             <tr>
-                                <th>id</th>
                                 <th>Creador por:</th>
-                                <th>Categoría</th>
+                                {{-- <th>Categoría</th> --}}
                                 <th>Ttulo</th>
                                 <th>Url</th>
+                                <th>Extracto</th>
                                 <th>Acciones</th>
                                 
                             </tr>
@@ -39,8 +39,8 @@
                         <tbody>
                             @forelse ($posts as $post)
                                 <tr>
-                                    <td>{{$post->user->id}}</td>
-                                    <td>{{$post->category->name}} </td>
+                                    <td>{{$post->user->name}}</td>
+                                    {{-- <td>{{$post->category->name}} </td> --}}
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->url}}</td>
                                     <td>{{$post->excerpt}}</td>

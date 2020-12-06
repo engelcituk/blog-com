@@ -55,9 +55,9 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
     
-    public function photos(){
+    public function images(){
 
-        return $this->morphMany(Photo::class, 'photoable');
+        return $this->morphMany(Image::class, 'imageable');
     }
     
     public function user() // el dueño del post, un post le pertenece a un solo usuario

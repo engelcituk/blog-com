@@ -16,10 +16,10 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         //miscelaneos
-        Category::create(['name' => 'Alojamiento','icon'=>'fas fa-hotel']);
-        Category::create(['name' => 'Alimentos','icon'=>'fas fa-utensils']);
-        Category::create(['name' => 'Bebidas','icon'=>'fas fa-cocktail']);
-        Category::create(['name' => 'Transporte','icon'=>'fas fa-bus']);
-        Category::create(['name' => 'Equipo','icon'=>'fas fa-toolbox']);
+        Category::create(['name' => 'Comunicado','icon'=>'fas fa-hotel']);
+        Category::create(['name' => 'Noticia','icon'=>'fas fa-utensils']);
+        Category::create(['name' => 'Opinion','icon'=>'fas fa-cocktail']);
+        Category::create(['name' => 'Evento','icon'=>'fas fa-bus']);
+        Category::create(['name' => 'Reunion','icon'=>'fas fa-toolbox']);
     }
 }

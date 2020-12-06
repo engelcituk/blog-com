@@ -235,3 +235,5 @@
         </ul>
     </div> <!-- END NAV FOOTER -->
 </aside>
+
+@include('admin.posts.modals.createPost') 
