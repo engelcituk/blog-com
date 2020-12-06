@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\Tag;
 
 
 class PostController extends Controller
@@ -61,9 +63,15 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        
+        $this->authorize('update',$post); //policie
+
+        return view('admin.posts.edit',[
+            'post'=> $post, 
+            'tags' => Tag::all(),
+            'categories'=> Category::all()
+            ]);
     }
 
     /**
