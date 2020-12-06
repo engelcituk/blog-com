@@ -2,11 +2,14 @@
 
 @section('title', 'Editar post')
 
-
 @section('content')
+
+@include('admin.shared.flash-messages') {{-- incluyo el bloque para mensajes flash --}}         
+
 <div class="content">
     <div class="container-fluid">
         <a href="{{route('admin.posts.index')}}" class="btn btn-warning mb-3"> <i class="fal fa-arrow-left"></i>  Regresar</a>
+        @include('admin.shared.error-messages')                             
 
         <form action="{{route('admin.posts.update', $post)}}" method="POST">
             @csrf  {{ method_field('PUT') }}
@@ -14,7 +17,6 @@
                   <div class="col-md-8">
                       <div class="card">
                         <div class="card-body">
-                          
                             <div class="form-group">
                               <label for="exampleTitulo" class="bmd-label-floating">Título de la publicación</label>
                               <input type="text" class="form-control" name="title" value="{{old('title', $post->title)}}">

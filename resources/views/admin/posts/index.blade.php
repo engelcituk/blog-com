@@ -5,7 +5,7 @@
 
 @section('content')
 
-    @include('admin.shared.flash-messages') {{-- incluyo el bloque para mensajes flash --}}         
+@include('admin.shared.flash-messages') {{-- incluyo el bloque para mensajes flash --}}         
 
 <div class="row">
     <div class="col-md-12">

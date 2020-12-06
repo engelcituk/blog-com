@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
+use App\Http\Requests\StorePostRequest;
+
 
 
 class PostController extends Controller
@@ -42,7 +44,7 @@ class PostController extends Controller
         $post = Post::create($request->all());
         /* en el modelo se sobreescribió el metodo create: public static function create, para crear url unicas
           */
-        return redirect()->route('admin.posts.edit', $post);
+       return redirect()->route('admin.posts.edit',compact('post'))->withFlash('El post se ha empezado a crear, continua agregandole más elementos');
 
     }
 
@@ -81,11 +83,19 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
+    public function update(Post $post, StorePostRequest $request)
+    {
+        $this->authorize('update',$post); // autorizacion para actualizar la publicacion 
+
+        $post->update($request->all()); 
+       
+        //etiquetas, sincroniza o crea nuevas tags asociados al post
+        $post->sincronizarTags($request->get('tags'));
+ 
+        return redirect()->route('admin.posts.edit', $post)->with('flash', 'Tú publicación ha sido actualizada');
+
+    }
     /**
      * Remove the specified resource from storage.
      *
