@@ -30,4 +30,22 @@ ClassicEditor
             orientation: "bottom left",
             templates: controls
         });
+
+    // script para usar dropzone
+    var miDropzone = new Dropzone(".dropzone", { 
+        url: "/admin/posts/{{$post->url}}/images",
+        dictDefaultMessage: "Arrastra aqui las fotos para subirlas",
+        acceptedFiles:'image/*',
+        maxFilesize: 2,
+        paramName:'image',
+        headers: {
+            "X-CSRF-TOKEN":"{{csrf_token()}}"
+        }
+        });
+        miDropzone.on('error', function(file, respuesta) {
+            var mensaje = respuesta.image[0];
+            $('.dz-error-message:last > span').text(mensaje);
+        });
+
+        Dropzone.autoDiscover= false;
 </script>

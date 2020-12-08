@@ -101,11 +101,14 @@
 @push('stylesCss')
     <link rel="stylesheet" media="screen, print" href="{{ asset('smartadmin/css/formplugins/bootstrap-datepicker/bootstrap-datepicker.css') }}">
     <link rel="stylesheet" media="screen, print" href="{{ asset('smartadmin/css/formplugins/select2/select2.bundle.css') }}">
+    <link rel="stylesheet" media="screen, print" href="{{ asset('smartadmin/css/formplugins/dropzone/dropzone.css') }}">
+
 @endpush
 @push('scriptsJs') 
     <script src="{{ asset('smartadmin/js/formplugins/bootstrap-datepicker/bootstrap-datepicker.js') }}" ></script>  
     <script src="{{ asset('smartadmin/js/formplugins/ckeditor/ckeditor.js') }}" ></script>  
-    <script src="{{ asset('smartadmin/js/formplugins/select2/select2.bundle.js') }}" ></script>   
+    <script src="{{ asset('smartadmin/js/formplugins/select2/select2.bundle.js') }}" ></script>  
+    <script src="{{ asset('smartadmin/js/formplugins/dropzone/dropzone.js') }}" ></script>  
     @include('admin.posts.js.edit') 
 @endpush
 
