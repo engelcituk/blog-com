@@ -27,6 +27,7 @@ function(){
     Route::resource('roles', 'RoleController', ['except'=>'show','as'=>'admin']); //as es para add prefijo admin al nombre de las rutas
     Route::resource('permissions', 'PermissionController',['only'=>['index','edit','update'],'as'=>'admin']); //only para aceptar ciertos metodos
     Route::post('posts/{post}/images', 'ImagesPostController@store')->name('admin.posts.images.store');
+    Route::delete('posts/images/delete', 'ImagesPostController@destroy')->name('admin.posts.images.destroy');
 
     //roles y permisos
     Route::middleware('role:Admin')

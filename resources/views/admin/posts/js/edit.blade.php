@@ -48,4 +48,40 @@ ClassicEditor
         });
 
         Dropzone.autoDiscover= false;
+
+    function deleteImagePost(idImagePost){
+      var csrf_token = $('meta[name="csrf-token"]').attr('content');     
+      Swal.fire({
+        title: '¿Seguro de borrar la foto para este post?',
+        text: "¡No podrás revertir esto!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, borrarlo!'
+      }).then((result) => {
+        if (result.value) {
+          $.ajax({
+                url: "{{ url('/admin/posts/images/delete') }}",
+                type: "DELETE",
+                data: {
+                    '_method': 'DELETE',
+                    'idImage': idImagePost,
+                    '_token': csrf_token
+                },
+                success: function(respuesta) {
+                  msg= respuesta.mensaje;
+                  //showNotification('top','right','success', msg);
+                  setTimeout(function(){
+                      location.reload();
+                  },3000);          
+                },
+                error: function(respuesta) {
+                  msg= respuesta.mensaje;
+                  //showNotification('top','right','danger', msg);
+                }
+            });
+        }
+      });
+    }
 </script>

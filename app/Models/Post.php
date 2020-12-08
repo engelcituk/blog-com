@@ -26,8 +26,8 @@ class Post extends Model
         // cuando se este eliminando una publicacion se borra en la db sus tags y en storage/posts se borran las imgs del post
         static::deleting( function($post){
             $post->tags()->detach(); // se quita sus tags
-            $post->photos->each(function($photo){ // se borra cada foto en la carpeta
-                $photo->delete();
+            $post->images->each(function($image){ // se borra cada foto en la carpeta
+                $image->delete();
             });
         });
         //al restaurar un post, por cascade restauro tambien sus relaciones 

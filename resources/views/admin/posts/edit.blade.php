@@ -9,7 +9,22 @@
 <div class="content">
     <div class="container-fluid">
         <a href="{{route('admin.posts.index')}}" class="btn btn-warning mb-3"> <i class="fal fa-arrow-left"></i>  Regresar</a>
-        @include('admin.shared.error-messages')                             
+        @include('admin.shared.error-messages')   
+        
+        <div class="row">
+          @foreach ($post->images as $photo)
+            <div class="col-md-2">
+                <div class="card">
+                  <div class="card-body">
+                      <button class="btn btn-danger btn-xs btnChico" style="position:absolute" onclick="deleteImagePost({{$photo->id}})">
+                          <i class="fal fa-times"></i>
+                        </button>
+                      <img src="{{url($photo->url)}}" class="card-img-top">
+                  </div>
+                </div>
+            </div>  
+            @endforeach
+        </div>
 
         <form action="{{route('admin.posts.update', $post)}}" method="POST">
             @csrf  {{ method_field('PUT') }}
@@ -92,19 +107,21 @@
   </div>
 
 <style>
-        .ck-editor__editable {
-              min-height: 250px;
-          }
+  .ck-editor__editable {
+    min-height: 250px;
+  }    
 </style> 
 @endsection
 
 @push('stylesCss')
+    <link rel="stylesheet" media="screen, print" href="{{ asset('smartadmin/css/notifications/sweetalert2/sweetalert2.bundle.css') }}">
     <link rel="stylesheet" media="screen, print" href="{{ asset('smartadmin/css/formplugins/bootstrap-datepicker/bootstrap-datepicker.css') }}">
     <link rel="stylesheet" media="screen, print" href="{{ asset('smartadmin/css/formplugins/select2/select2.bundle.css') }}">
     <link rel="stylesheet" media="screen, print" href="{{ asset('smartadmin/css/formplugins/dropzone/dropzone.css') }}">
 
 @endpush
 @push('scriptsJs') 
+    <script src="{{ asset('smartadmin/js/notifications/sweetalert2/sweetalert2.bundle.js') }}" ></script>   
     <script src="{{ asset('smartadmin/js/formplugins/bootstrap-datepicker/bootstrap-datepicker.js') }}" ></script>  
     <script src="{{ asset('smartadmin/js/formplugins/ckeditor/ckeditor.js') }}" ></script>  
     <script src="{{ asset('smartadmin/js/formplugins/select2/select2.bundle.js') }}" ></script>  
