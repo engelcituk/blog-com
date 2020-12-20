@@ -85,6 +85,7 @@
                 @endforelse
                 
             </div>
+            {!! $posts->links('public.shared.paginator') !!}
 
         </div>
     </div>

@@ -31,7 +31,6 @@
                                 {{-- <th>Categoría</th> --}}
                                 <th>Ttulo</th>
                                 <th>Url</th>
-                                <th>Extracto</th>
                                 <th>Acciones</th>
                                 
                             </tr>
@@ -43,7 +42,6 @@
                                     {{-- <td>{{$post->category->name}} </td> --}}
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->url}}</td>
-                                    <td>{{$post->excerpt}}</td>
                                     <td>                                        
                                         @can('update', $post)
                                             <a class="btn btn-primary btn-sm" href="{{route('admin.posts.edit', $post)}}"><i class="fal fa-edit"></i> </a>
