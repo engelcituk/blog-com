@@ -11,8 +11,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['register' => false ]);
 Route::get('/', 'PagesController@home')->name('home');
 Route::get('/blog', 'PagesController@blog')->name('blog');
+Route::get('/blog/{post}', 'PagesController@showPost')->name('blog.post.show');
 Route::get('/contact', 'PagesController@contact')->name('contact');
 Route::get('/about', 'PagesController@about')->name('aboutus');
+Route::get('categories/{category}', 'CategoriesController@show')->name('categories.show'); 
 
 
 
