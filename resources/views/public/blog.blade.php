@@ -13,7 +13,11 @@
     <div class="content-center">
 		<div class="row">
 			<div class="col-md-8 ml-auto mr-auto text-center">
-				<h2 class="title">A Place for Entrepreneurs to Share and Discover New Stories</h2>
+                    @if (isset($title))
+                        <h2 class="title">{{$title}}</h2>                                        
+                    @else
+                        <h2 class="title">Un lugar para compartir y descubir nuevas historias</h2>                    
+                    @endif
                 <a href="#button" class="btn btn-primary btn-round  btn-icon" >
                <i class="fab fa-twitter"></i>
             </a>
@@ -30,9 +34,7 @@
 
 
 <div class="main">
-
     <div class="container">
-        
         <div class="section">
             <ul class="list-inline">
                 <li class="list-inline-item">
@@ -42,7 +44,7 @@
                 </li>
                 @forelse ($categories as $category)
                     <li class="list-inline-item">
-                        <a class="social-icon text-xs-center" href="{{route('categories.show', $category)}}">
+                        <a class="social-icon text-xs-center" href="{{route('post.categories.show', $category)}}">
                             <span class="badge badge-info"><i class="{{$category->icon}}"></i> {{$category->name}}</span>
                         </a>
                     </li>            
@@ -59,18 +61,20 @@
                     <div class="col-md-4">
                         <div class="card card-plain card-blog">
                             <div class="card-image">
-                                <a href="{{route('blog.post.show',$post)}}">
-                                    <img class="img rounded img-raised" src="{{( $post->images->count() > 0) ? $post->images->first()->url : 'now-ui-kit/assets/img/bg5.jpg'}}" />
+                                <a href="{{route('post.show',$post)}}">
+                                        
+                                    <img class="img rounded img-raised" src="{{( $post->images->count() > 0) ? asset($post->images->first()->url) : asset('now-ui-kit/assets/img/bg5.jpg')}}" />
                                 </a>
                             </div>
+                            
                             <div class="card-body">
                                 <h6 class="category text-info">{{$post->category->name}}</h6>
                                 <h4 class="card-title">
-                                    <a href="{{route('blog.post.show',$post)}}">{{$post->title}}</a>
+                                    <a href="{{route('post.show',$post)}}">{{$post->title}}</a>
                                 </h4>
                                 <p class="card-description">
                                     {{$post->excerpt}}...
-                                    <a href="{{route('blog.post.show',$post)}}"> Leer más</a>
+                                    <a href="{{route('post.show',$post)}}"> Leer más</a>
                                     <div class="author">
 
                                         <img src="{{ asset('now-ui-kit/assets/img/olivia.jpg')}}" alt="..." class="avatar img-raised">
@@ -86,10 +90,9 @@
                 
             </div>
             {!! $posts->links('public.shared.paginator') !!}
-
         </div>
     </div>
-                
+</div>             
 @endsection
 
 

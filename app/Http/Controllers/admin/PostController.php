@@ -86,8 +86,7 @@ class PostController extends Controller
 
     public function update(Post $post, StorePostRequest $request)
     {
-        //return $request->all();
-
+       
         $this->authorize('update',$post); // autorizacion para actualizar la publicacion 
 
         $post->update($request->all()); 
