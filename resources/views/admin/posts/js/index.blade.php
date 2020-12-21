@@ -41,7 +41,7 @@ $('#createPost').on('shown.bs.modal', function (e) {
     window.location.hash = '#create';
 });
 
-const deleteSale = ( idSale ) => {    
+const deletePost = ( idPost ) => {    
     Swal.fire({
       title: '¿Seguro de borrar esta venta?',
       text: "¡No podrás revertir esto!",
@@ -53,11 +53,11 @@ const deleteSale = ( idSale ) => {
     }).then((result) => {
       if (result.value) {
         $.ajax({
-              url: "{{ url('admin/sales') }}" + '/' + idSale,
+              url: "{{ url('admin/posts') }}" + '/' + idPost,
               type: "DELETE",
               data: {
                   '_method': 'DELETE',
-                  //'id': idSale,
+                  //'id': idPost,
                   '_token': csrf_token
               },
               success: function(respuesta) {

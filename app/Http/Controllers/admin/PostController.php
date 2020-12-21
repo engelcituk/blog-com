@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
@@ -103,8 +105,27 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+   
+    public function destroy($idPost) //solo el admin hace esto
     {
-        //
+        
+        $authUser = Auth::user(); // get current logged in user
+        $post = Post::find($idPost); //busco post a borrar
+
+        if($authUser->can('delete',$post)){
+            $post->delete();
+            $ok= true;
+            $mensaje='Post eliminado';
+        }else{
+            $ok= false;
+            $mensaje='No se puede eliminar al post';
+        }
+        
+         return response()->json(
+            [
+            'ok' => $ok,
+            'mensaje' => $mensaje
+            ]
+        );
     }
 }
