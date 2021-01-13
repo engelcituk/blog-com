@@ -3,6 +3,7 @@
 
 ClassicEditor
     .create( document.querySelector( '#ckeditor' ), {
+        
         toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
         heading: {
             options: [

@@ -42,7 +42,10 @@
                                     {{-- <td>{{$post->category->name}} </td> --}}
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->url}}</td>
-                                    <td>                                        
+                                    <td>   
+                                        @can('view', $post)
+                                            <a class="btn btn-info btn-sm" href="{{route('post.show', $post)}}" target="_blank"><i class="fal fa-eye"></i> </a>
+                                        @endcan                                     
                                         @can('update', $post)
                                             <a class="btn btn-primary btn-sm" href="{{route('admin.posts.edit', $post)}}"><i class="fal fa-edit"></i> </a>
                                         @endcan
